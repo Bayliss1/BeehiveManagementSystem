@@ -9,19 +9,30 @@
     <Grid x:Name="___No_Name_">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="62*"/>
             <ColumnDefinition Width="63*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Label Content="Job Assigments" HorizontalAlignment="Center" Margin="20,0" VerticalAlignment="Bottom" FontSize="18"/>
 
-        <StackPanel Grid.Row="1">
-            <ComboBox x:Name="JobSelector" Width="120" FontSize="18" Margin="20"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20">
+            <ComboBox x:Name="JobSelector" FontSize="18" Margin="0,0,0,20" SelectedIndex="0">
+                <ListBoxItem Content="Nectar Collector"/>
+                <ListBoxItem Content="Honey Manufacturer"/>
+                <ListBoxItem Content="Egg Care"/>
+            </ComboBox>
+            <Button Content="Assign this job to a bee" FontSize="18px" Click="AssignJob_Click"/>
         </StackPanel>
+
+        <Button Content="Work the next shift" Grid.Row="2" Click="WorkShift_Click" FontSize="18" Margin="20"/>
+
+        <Label Content="Queen's Report" Grid.Column="1" HorizontalAlignment="Center" Margin="20,0" VerticalAlignment="Top" FontSize="18"/>
+
+        <TextBox x:Name="StatusReport" Grid.Column="1" Margin="20" Grid.Row="1" TextWrapping="Wrap" Grid.RowSpan="2" IsReadOnly="True"/>
 
     </Grid>
 </Window>

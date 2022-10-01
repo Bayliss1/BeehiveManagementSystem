@@ -24,5 +24,15 @@ namespace BeehiveManagementSystem
         {
             InitializeComponent();
         }
+
+        private void AssignJob_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void WorkShift_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
