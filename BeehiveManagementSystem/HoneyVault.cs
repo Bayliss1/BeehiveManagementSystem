@@ -63,7 +63,7 @@ namespace BeehiveManagementSystem
             }
         }
 
-        private static bool ConsumeHoney(float amount)
+        public static bool ConsumeHoney(float amount)
         {
             if (amount <= honey)
             {
