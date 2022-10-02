@@ -27,7 +27,7 @@ namespace BeehiveManagementSystem
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
-
+            Queen.AssignBee(JobSelector.SelectedIndex);
         }
 
         private void WorkShift_Click(object sender, RoutedEventArgs e)
