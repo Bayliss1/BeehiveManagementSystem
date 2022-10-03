@@ -18,5 +18,10 @@ namespace BeehiveManagementSystem
                 return 1.7f;
             }
         }
+
+        protected override void DoJob()
+        {
+
+        }
     }
 }

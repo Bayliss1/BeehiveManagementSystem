@@ -29,7 +29,7 @@ namespace BeehiveManagementSystem
         /// If there is an unassigned worker, it creates a new object of the chosen bee subclass inside worker array.
         /// </summary>
         /// <param name="requestedJob">The requested job to assign to the new worker.</param>
-        public void AssignBee(int requestedJob)
+        public void AssignBee(string requestedJob)
         {
             if (unassignedWorkers >= 1)
             {
@@ -37,32 +37,31 @@ namespace BeehiveManagementSystem
                 Array.Resize(ref workers, workers.Length + 1);
                 switch (requestedJob)
                 {
-                    case '0':
-                        string assignedJob0 = "NectarCollector";
-                        workers[workers.Length - 1] = new NectarCollector(assignedJob0);
+                    case "Nectar Collector":
+                        workers[workers.Length - 1] = new NectarCollector(requestedJob);
                         break;
-                    case '1':
-                        string assignedJob1 = "HoneyManufacturer";
-                        workers[workers.Length - 1] = new HoneyManufacturer(assignedJob1);
+                    case "Honey Manufacturer":
+                        workers[workers.Length - 1] = new HoneyManufacturer(requestedJob);
                         break;
-                    case '2':
-                        string assignedJob2 = "EggCare";
-                        workers[workers.Length - 1] = new EggCare(assignedJob2);
+                    case "EggCare":
+                        workers[workers.Length - 1] = new EggCare(requestedJob);
                         break;
                     default:
                         return;
                 }
             }
         }
-
-        private void DoJob()
+                
+        protected override void DoJob()
         {
             eggs += EGGS_PER_SHIFT;
             
-            foreach (Bee worker in workers)
+            foreach (Bee bee in workers)
             {
-                // I have absolutely no clue how to make this work
+                bee.WorkTheNextShift();
             }
+
+            HoneyVault.ConsumeHoney(HONEY_PER_UNASSIGNED_WORKER * unassignedWorkers);
         }
 
         /// <summary>

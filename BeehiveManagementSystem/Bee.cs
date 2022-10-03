@@ -23,11 +23,11 @@ namespace BeehiveManagementSystem
         /// </summary>
         public void WorkTheNextShift()
         {
-            if (HoneyVault.ConsumeHoney(CostPerShift)) Dojob();
+            if (HoneyVault.ConsumeHoney(CostPerShift)) DoJob();
             else { return; }
         }
 
-        protected virtual void Dojob()
+        protected virtual void DoJob()
         {
             // subclasses will override this method
         }

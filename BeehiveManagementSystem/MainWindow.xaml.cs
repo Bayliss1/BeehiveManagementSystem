@@ -20,6 +20,8 @@ namespace BeehiveManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        Queen queen = new Queen("Queen");
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,12 +29,12 @@ namespace BeehiveManagementSystem
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {
-            Queen.AssignBee(JobSelector.SelectedIndex);
+            queen.AssignBee(JobSelector.Text);
         }
 
         private void WorkShift_Click(object sender, RoutedEventArgs e)
         {
-
+            queen.WorkTheNextShift();
         }
     }
 }
