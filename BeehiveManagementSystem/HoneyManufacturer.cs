@@ -8,7 +8,7 @@ namespace BeehiveManagementSystem
 {
     class HoneyManufacturer : Bee
     {
-        public HoneyManufacturer(string assignedJob) : base(assignedJob) { /* uses base class constructor */ }
+        public HoneyManufacturer(string assignedJob) : base(assignedJob) { }
 
         private const float NECTAR_PROCESSED_PER_SHIFT = 33.15f;
 

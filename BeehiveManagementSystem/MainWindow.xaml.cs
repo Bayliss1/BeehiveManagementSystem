@@ -20,12 +20,11 @@ namespace BeehiveManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        private Queen queen = new Queen("Queen");
         public MainWindow()
         {
             InitializeComponent();
-            Queen queen = new Queen("Queen");
-    }
+        }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)
         {

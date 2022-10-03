@@ -8,7 +8,7 @@ namespace BeehiveManagementSystem
 {
     class NectarCollector : Bee
     {
-        public NectarCollector(string assignedJob) : base(assignedJob) { /* uses base class constructor */ }
+        public NectarCollector(string assignedJob) : base(assignedJob) { }
 
         private const float NECTAR_COLLECTED_PER_SHIFT = 33.15f;
 

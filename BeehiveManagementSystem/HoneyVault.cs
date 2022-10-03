@@ -39,8 +39,7 @@ namespace BeehiveManagementSystem
                 else nectarWarning = "No nectar warnings";
 
                 // returns the 4 strings above combined into one string, with new lines seperating them
-                statusReport = honeyAmount + "\n" + nectarAmount + "\n" + honeyWarning + "\n" + nectarWarning;
-                return statusReport;
+                return statusReport = honeyAmount + "\n" + nectarAmount + "\n" + honeyWarning + "\n" + nectarWarning;
             }
         }
 

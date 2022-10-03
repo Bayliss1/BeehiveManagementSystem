@@ -19,7 +19,7 @@ namespace BeehiveManagementSystem
         // fields
         public Bee[] workers = new Bee[0];
         private float unassignedWorkers = 3f;
-        private float eggs;
+        private float eggs = 0;
         private const float EGGS_PER_SHIFT = 0.45f;
         private const float HONEY_PER_UNASSIGNED_WORKER = 0f;
 
@@ -35,23 +35,23 @@ namespace BeehiveManagementSystem
         /// <summary>
         /// If there is an unassigned worker, it creates a new object of the chosen bee subclass inside worker array.
         /// </summary>
-        /// <param name="requestedJob">The requested job to assign to the new worker.</param>
-        public void AssignBee(string requestedJob)
+        /// <param name="Job">The requested job to assign to the new worker.</param>
+        public void AssignBee(string job)
         {
             if (unassignedWorkers >= 1)
             {
                 unassignedWorkers--;
                 Array.Resize(ref workers, workers.Length + 1);
-                switch (requestedJob)
+                switch (job)
                 {
                     case "Nectar Collector":
-                        workers[workers.Length - 1] = new NectarCollector(requestedJob);
+                        workers[workers.Length - 1] = new NectarCollector(job);
                         break;
                     case "Honey Manufacturer":
-                        workers[workers.Length - 1] = new HoneyManufacturer(requestedJob);
+                        workers[workers.Length - 1] = new HoneyManufacturer(job);
                         break;
                     case "EggCare":
-                        workers[workers.Length - 1] = new EggCare(requestedJob);
+                        workers[workers.Length - 1] = new EggCare(job);
                         break;
                     default:
                         return;

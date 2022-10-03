@@ -8,9 +8,10 @@ namespace BeehiveManagementSystem
 {
     class EggCare : Bee
     {
+        private Queen queen;
         public EggCare(string assignedJob) : base(assignedJob)
         {
-            Queen queen = new Queen("Queen");
+            this.queen = queen;
         }
 
         private const float CARE_PROGRESS_PER_SHIFT = 0.15f;
