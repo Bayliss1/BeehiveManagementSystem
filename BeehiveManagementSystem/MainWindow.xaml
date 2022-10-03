@@ -20,7 +20,7 @@
         <Label Content="Job Assigments" HorizontalAlignment="Center" Margin="20,0" VerticalAlignment="Bottom" FontSize="18"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20">
-            <ComboBox x:Name="JobSelector" FontSize="18" Margin="0,0,0,20" SelectedIndex="0">
+            <ComboBox x:Name="jobSelector" FontSize="18" Margin="0,0,0,20" SelectedIndex="0">
                 <ListBoxItem Content="Nectar Collector"/>
                 <ListBoxItem Content="Honey Manufacturer"/>
                 <ListBoxItem Content="Egg Care"/>
@@ -32,7 +32,7 @@
 
         <Label Content="Queen's Report" Grid.Column="1" HorizontalAlignment="Center" Margin="20,0" VerticalAlignment="Top" FontSize="18"/>
 
-        <TextBox x:Name="StatusReport" Grid.Column="1" Margin="20" Grid.Row="1" TextWrapping="Wrap" Grid.RowSpan="2" IsReadOnly="True"/>
+        <TextBox x:Name="statusReport" Grid.Column="1" Margin="20" Grid.Row="1" TextWrapping="Wrap" Grid.RowSpan="2" IsReadOnly="True"/>
 
     </Grid>
 </Window>

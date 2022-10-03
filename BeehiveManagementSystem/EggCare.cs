@@ -8,7 +8,12 @@ namespace BeehiveManagementSystem
 {
     class EggCare : Bee
     {
-        public EggCare(string assignedJob) : base(assignedJob) { /* uses base class constructor */ }
+        public EggCare(string assignedJob) : base(assignedJob)
+        {
+            Queen queen = new Queen("Queen");
+        }
+
+        private const float CARE_PROGRESS_PER_SHIFT = 0.15f;
 
         // amount of honey used per shift worked
         protected override float CostPerShift
@@ -21,7 +26,7 @@ namespace BeehiveManagementSystem
 
         protected override void DoJob()
         {
-
+            queen.CareForEggs(CARE_PROGRESS_PER_SHIFT);
         }
     }
 }

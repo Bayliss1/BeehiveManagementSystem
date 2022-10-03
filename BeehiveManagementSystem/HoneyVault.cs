@@ -44,13 +44,13 @@ namespace BeehiveManagementSystem
             }
         }
 
-        private static void CollectNectar(float amount)
+        public static void CollectNectar(float amount)
         {
-            if (amount > 0) { honey += amount; }
+            if (amount > 0) { nectar += amount; }
             else return;
         }
 
-        private static void ConvertNectarToHoney(float amount)
+        public static void ConvertNectarToHoney(float amount)
         {
             if (amount <= nectar)
             {

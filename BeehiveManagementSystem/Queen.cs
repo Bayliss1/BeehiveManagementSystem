@@ -8,10 +8,17 @@ namespace BeehiveManagementSystem
 {
     class Queen : Bee
     {
-        public Queen(string assignedJob) : base(assignedJob) { /* uses base class constructor */ }
+        // constructor, assigns a bee to each job automatically
+        public Queen(string assignedJob) : base(assignedJob) 
+        {
+            AssignBee("Nectar Collector");
+            AssignBee("Honey Manufacturer");
+            AssignBee("EggCare");
+        }
 
-        public Bee[] workers = new Bee[1];
-        private float unassignedWorkers;
+        // fields
+        public Bee[] workers = new Bee[0];
+        private float unassignedWorkers = 3f;
         private float eggs;
         private const float EGGS_PER_SHIFT = 0.45f;
         private const float HONEY_PER_UNASSIGNED_WORKER = 0f;
@@ -50,8 +57,12 @@ namespace BeehiveManagementSystem
                         return;
                 }
             }
+            UpdateStatusReport();
         }
-                
+        
+        /// <summary>
+        /// Lays some eggs, demands the worker beers to do their next shift, takes some honey for the unassigned workers, updates the status report.
+        /// </summary>
         protected override void DoJob()
         {
             eggs += EGGS_PER_SHIFT;
@@ -62,15 +73,47 @@ namespace BeehiveManagementSystem
             }
 
             HoneyVault.ConsumeHoney(HONEY_PER_UNASSIGNED_WORKER * unassignedWorkers);
+
+            UpdateStatusReport();
+        }
+
+
+        public string StatusReport { get; private set; }
+        /// <summary>
+        /// Updates status report with most up to date data.
+        /// </summary>
+        private void UpdateStatusReport()
+        {
+            string eggsAmount = Convert.ToString(eggs);
+            string unassignedWorkersAmount = Convert.ToString(unassignedWorkers);
+            
+            int nectarCollectorsAmount = 0;
+            foreach (NectarCollector bee in workers)
+            {
+                nectarCollectorsAmount++;
+            }
+
+            int honeyManufacturersAmount = 0;
+            foreach (HoneyManufacturer bee in workers)
+            {
+                honeyManufacturersAmount++;
+            }
+
+            int EggCaresAmount = 0;
+            foreach (EggCare bee in workers)
+            {
+                EggCaresAmount++;
+            }
+
+            StatusReport = HoneyVault.StatusReport + "\n" + "Egg count: " + eggsAmount + "\n" + "Unassigned workers: " + unassignedWorkersAmount + "\n" + nectarCollectorsAmount + " Nectar Collector bees" + "\n" + honeyManufacturersAmount + " Honey Manufacturer bees" + "\n" + EggCaresAmount + " Egg Care bees" + "\n" + "TOTAL WORKERS: " + workers.Length;
         }
 
         /// <summary>
-        /// Converts eggs to unassignedWorkers and then resets eggs to 0
+        /// If there are enough eggs, it converts them to unassignedWorkers.
         /// </summary>
-        public void CareForEggs()
+        public void CareForEggs(float eggsToConvert)
         {
-            unassignedWorkers += eggs;
-            eggs = 0;
+            if (eggs >= eggsToConvert) unassignedWorkers += eggs - eggsToConvert;
         }
     }
 }
