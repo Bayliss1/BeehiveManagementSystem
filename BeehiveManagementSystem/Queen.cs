@@ -13,7 +13,7 @@ namespace BeehiveManagementSystem
         {
             AssignBee("Nectar Collector");
             AssignBee("Honey Manufacturer");
-            AssignBee("EggCare");
+            AssignBee("Egg Care");
         }
 
         // fields
@@ -55,7 +55,7 @@ namespace BeehiveManagementSystem
                         workers[workers.Length - 1] = new HoneyManufacturer();
                         honeyManufacturerAmount++;
                         break;
-                    case "EggCare":
+                    case "Egg Care":
                         workers[workers.Length - 1] = new EggCare(this);
                         eggCareAmount++;
                         break;
