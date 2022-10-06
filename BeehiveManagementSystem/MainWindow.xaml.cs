@@ -24,6 +24,7 @@ namespace BeehiveManagementSystem
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void AssignJob_Click(object sender, RoutedEventArgs e)

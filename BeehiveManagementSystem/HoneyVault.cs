@@ -19,8 +19,8 @@ namespace BeehiveManagementSystem
         {
             get
             {
-                string honeyAmount = Convert.ToString(honey);
-                string nectarAmount = Convert.ToString(nectar);
+                string honeyAmount = "Honey: " + Convert.ToString(honey);
+                string nectarAmount = "Nectar: " + Convert.ToString(nectar);
 
                 // adds warning if honey levels are low
                 string honeyWarning;

@@ -8,11 +8,7 @@ namespace BeehiveManagementSystem
 {
     class HoneyManufacturer : Bee
     {
-        public HoneyManufacturer(string assignedJob) : base(assignedJob) { }
-
         private const float NECTAR_PROCESSED_PER_SHIFT = 33.15f;
-
-        // amount of honey used per shift worked
         protected override float CostPerShift
         {
             get
@@ -20,6 +16,8 @@ namespace BeehiveManagementSystem
                 return 1.7f;
             }
         }
+
+        public HoneyManufacturer(string job = "Honey Manufacturer") : base("Honey Manufacturer") { }
 
         protected override void DoJob()
         {

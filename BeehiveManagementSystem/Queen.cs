@@ -22,6 +22,9 @@ namespace BeehiveManagementSystem
         private float eggs = 0;
         private const float EGGS_PER_SHIFT = 0.45f;
         private const float HONEY_PER_UNASSIGNED_WORKER = 0f;
+        private int nectarCollectorAmount = 0;
+        private int honeyManufacturerAmount = 0;
+        private int eggCareAmount = 0;
 
         // amount of honey used per shift worked
         protected override float CostPerShift
@@ -45,13 +48,16 @@ namespace BeehiveManagementSystem
                 switch (job)
                 {
                     case "Nectar Collector":
-                        workers[workers.Length - 1] = new NectarCollector(job);
+                        workers[workers.Length - 1] = new NectarCollector();
+                        nectarCollectorAmount++;
                         break;
                     case "Honey Manufacturer":
-                        workers[workers.Length - 1] = new HoneyManufacturer(job);
+                        workers[workers.Length - 1] = new HoneyManufacturer();
+                        honeyManufacturerAmount++;
                         break;
                     case "EggCare":
-                        workers[workers.Length - 1] = new EggCare(job);
+                        workers[workers.Length - 1] = new EggCare(this);
+                        eggCareAmount++;
                         break;
                     default:
                         return;
@@ -86,26 +92,7 @@ namespace BeehiveManagementSystem
         {
             string eggsAmount = Convert.ToString(eggs);
             string unassignedWorkersAmount = Convert.ToString(unassignedWorkers);
-            
-            int nectarCollectorsAmount = 0;
-            foreach (NectarCollector bee in workers)
-            {
-                nectarCollectorsAmount++;
-            }
-
-            int honeyManufacturersAmount = 0;
-            foreach (HoneyManufacturer bee in workers)
-            {
-                honeyManufacturersAmount++;
-            }
-
-            int EggCaresAmount = 0;
-            foreach (EggCare bee in workers)
-            {
-                EggCaresAmount++;
-            }
-
-            StatusReport = HoneyVault.StatusReport + "\n" + "Egg count: " + eggsAmount + "\n" + "Unassigned workers: " + unassignedWorkersAmount + "\n" + nectarCollectorsAmount + " Nectar Collector bees" + "\n" + honeyManufacturersAmount + " Honey Manufacturer bees" + "\n" + EggCaresAmount + " Egg Care bees" + "\n" + "TOTAL WORKERS: " + workers.Length;
+            StatusReport = HoneyVault.StatusReport + "\n" + "Egg count: " + eggsAmount + "\n" + "Unassigned workers: " + unassignedWorkersAmount + "\n" + nectarCollectorAmount + " Nectar Collector bees" + "\n" + honeyManufacturerAmount + " Honey Manufacturer bees" + "\n" + eggCareAmount + " Egg Care bees" + "\n" + "TOTAL WORKERS: " + workers.Length;
         }
 
         /// <summary>
