@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeehiveManagementSystem
 {
-    class Bee
+    abstract class Bee
     {
         // property storing job, assigned using constructor
         public string Job { get; }
@@ -16,7 +16,7 @@ namespace BeehiveManagementSystem
         }
 
         // subclasses set their CostPerShift as it differs for each, so it is set to read-only in this base class
-        protected virtual float CostPerShift { get; }
+        protected abstract float CostPerShift { get; }
 
         /// <summary>
         /// Checks whether there is enough honey in the vault for the bee's CostPerShift, if there is then it calls DoJob, if not then it returns.
@@ -27,9 +27,6 @@ namespace BeehiveManagementSystem
             else { return; }
         }
 
-        protected virtual void DoJob()
-        {
-            // subclasses will override this method
-        }
+        protected abstract void DoJob();
     }
 }
